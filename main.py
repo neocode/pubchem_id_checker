@@ -16,12 +16,12 @@ async def get_cid_by_name(name: str):
     
 @app.get("/get_sid_by_name/{name}")
 async def get_sid_by_name(name: str):
-        try:
-            data = requests.get("https://pubchem.ncbi.nlm.nih.gov/rest/pug/substance/name/{}/sids/json".\
-                                format(urllib_parse.quote(name))).json()
-            sid = str(data["IdentifierList"]["SID"])
-            sid = sid.replace("[", "")
-            sid = sid.replace("]", "")
-            return sid
-        except:
-            return None
+    try:
+        data = requests.get("https://pubchem.ncbi.nlm.nih.gov/rest/pug/substance/name/{}/sids/json".\
+                            format(urllib_parse.quote(name))).json()
+        sid = str(data["IdentifierList"]["SID"])
+        sid = sid.replace("[", "")
+        sid = sid.replace("]", "")
+        return sid
+    except:
+        return None
